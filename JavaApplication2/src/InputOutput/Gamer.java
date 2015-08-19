@@ -13,16 +13,29 @@ import java.io.Serializable;
  */
 public class Gamer implements Serializable {
     private String name;
-    private int max_score, last_score;
+    private int max_score, last_score, current_score;
 
-    public Gamer(String name, int max_score, int last_score) {
+    public Gamer(String name, int max_score, int last_score, int current_score) {
         this.name = name;
         this.max_score = max_score;
         this.last_score = last_score;
+        this.current_score = current_score;
     }
-    
+
     public Gamer(){
         
+    }
+    
+    public void incrementScore(){
+        this.current_score++;
+    }
+
+    public int getCurrent_score() {
+        return current_score;
+    }
+
+    public void setCurrent_score(int current_score) {
+        this.current_score = current_score;
     }
     
     public String getName() {
@@ -51,7 +64,8 @@ public class Gamer implements Serializable {
 
     @Override
     public String toString() {
-        return "Gamer{" + "name=" + name + ", max_score=" + max_score + ", last_score=" + last_score + '}';
+        return "Gamer{" + "name=" + name + ", max_score=" + max_score + ", last_score=" + last_score + ", current_score=" + current_score + '}';
     }
+
    
 }

@@ -14,17 +14,32 @@ import java.io.File;
 public class Class {
     public static void main(String[] args) {
         String nome = IOManager.readKey("Qual seu nome? ");
-        System.out.println("Seu nome é: " + nome);
-        Gamer gamer = new Gamer(nome, 0, 0);
+        Gamer gamer = new Gamer(nome, 0, 0, 0);
         
         File file = new File("scoreData.txt");
-        
-        IOManager.writeGamer(gamer, file);
-        
-        System.out.println("O Gamer escrito foi: "+gamer);
-        
         Gamer gamer2 = IOManager.readGamer(file);
+        if(gamer.getName().equalsIgnoreCase(gamer2.getName())){
+            gamer = gamer2;
+            System.out.println("------------------------");
+            System.out.println("Gamer: "+gamer.getName());
+            System.out.println("Maior pontuação: "+gamer.getMax_score());
+            System.out.println("Última pontuação: "+gamer.getLast_score());
+            MainGame mg = new MainGame(gamer);
+        }
+        else{
+            System.out.println("Esse é um jogo exclsivo");
+        }
         
-        System.out.println("Gamer lido: "+gamer2);
+        
+        
+//        IOManager.writeGamer(gamer, file);
+//        
+//        System.out.println("O Gamer escrito foi: "+gamer);
+//        
+//        Gamer gamer2 = IOManager.readGamer(file);
+//        
+//        System.out.println("Gamer lido: "+gamer2);
+        
+        
     }
 }
